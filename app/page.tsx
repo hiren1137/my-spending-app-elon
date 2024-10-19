@@ -1,25 +1,29 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "./components/ui/table";
-import { Button } from "./components/ui/button";
-import Link from "next/link";
-import { Printer, QuoteIcon } from "lucide-react";
-import Image from 'next/image';
+/* eslint-disable react/no-unescaped-entities */
+"use client";
 
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./components/ui/table";
+import { Button } from "./components/ui/button";
+import { Printer, QuoteIcon } from "lucide-react";
+
+const formatMoney = (amount: number): string => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  }).format(amount);
+};
+
+const getCurrentDate = () => {
+  return new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
 // Define types
 type Item = {
   id: number;
@@ -101,24 +105,64 @@ const quotes: string[] =  [
   "If Elon Musk's wealth was distributed equally to every person on Earth, each would receive about $30.",
 ];
 
+type NetWorthCardProps = {
+  balance: number;               // Type: number
+  initialBalance: number;        // Type: number
+  onViewReceipt: () => void;     // Function that returns nothing (void)
+};
+
+// Define the component with the typed props
+const NetWorthCard: React.FC<NetWorthCardProps> = ({ balance, initialBalance, onViewReceipt }) => {
+  return (
+    <div className="w-full bg-gradient-to-r from-blue-500 to-teal-400 text-white p-4 shadow-lg rounded-lg">
+      <div className="container mx-auto text-center">
+        <div className="flex items-center justify-center mb-2">
+          <span className="text-2xl mr-2">💰</span>
+          <span className="text-2xl font-bold">Remaining Fortune: </span>
+        </div>
+        <span className="text-3xl font-bold">{formatMoney(balance)}</span>
+        {initialBalance - balance > 0 && (
+          <div className="mt-2 text-sm bg-white bg-opacity-20 p-2 rounded-md">
+            <span className="mr-2">📝</span>
+            <p>You&apos;ve spent: {((initialBalance - balance) / initialBalance * 100).toFixed(4)}% of total</p>
+            <button 
+              onClick={onViewReceipt}
+              className="ml-2 bg-white text-blue-500 px-2 py-1 rounded-full hover:bg-blue-100 focus:outline-none transition duration-300"
+            >
+              View receipt 📝
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export default function SpendElonsMoneyDeluxe() {
   const [balance, setBalance] = useState(initialBalance);
   const [cart, setCart] = useState<Cart>({});
   const [quote, setQuote] = useState("");
   const [showReceipt, setShowReceipt] = useState(false);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
   }, []);
 
-  const formatMoney = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const contentStart = contentRef.current?.offsetTop ?? 0;
+      const contentEnd = contentStart + (contentRef.current?.offsetHeight ?? 0) - window.innerHeight;
+
+      setShowStickyHeader(scrollPosition > contentStart && scrollPosition < contentEnd);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   const buyItem = (id: number, price: number) => {
     if (balance >= price) {
@@ -154,81 +198,12 @@ export default function SpendElonsMoneyDeluxe() {
     window.open(facebookUrl, '_blank');
   };
 
-  // NetWorthCard component
-  const NetWorthCard: React.FC<{ balance: number; formatMoney: (amount: number) => string; initialBalance: number }> = ({ balance, formatMoney, initialBalance }) => {
-    const [displayBalance, setDisplayBalance] = useState(balance);
-  
-    useEffect(() => {
-      if (balance !== displayBalance) {
-        const step = (displayBalance - balance) / 50;
-        let current = displayBalance;
-  
-        const timer = setInterval(() => {
-          current -= step;
-          if (Math.abs(current - balance) < Math.abs(step)) {
-            clearInterval(timer);
-            setDisplayBalance(balance);
-          } else {
-            setDisplayBalance(current);
-          }
-        }, 20);
-  
-        return () => clearInterval(timer);
-      }
-    }, [balance, displayBalance]);
-  
-    const spentAmount = initialBalance - balance;
-    const spentPercentage = (spentAmount / initialBalance) * 100;
-
-    return (
-      <div className="sticky top-0 z-10">
-        <Card className="bg-blue-600 shadow-lg mb-4 p-4">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-xl sm:text-2xl text-white font-bold">Elon&apos;s Fortune</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-3xl sm:text-5xl font-extrabold text-white mb-2 break-words">
-              {formatMoney(balance)}
-            </p>
-            <div className="w-full bg-blue-400 rounded-full h-2 mb-2">
-              <div 
-                className="bg-green-500 h-2 rounded-full transition-all duration-500 ease-out" 
-                style={{ width: `${spentPercentage}%` }}
-              ></div>
-            </div>
-            <p className="text-sm text-blue-100 mb-1">
-              You&apos;ve spent: {formatMoney(spentAmount)} ({spentPercentage.toFixed(4)}%)
-            </p>
-            <p className="text-xs text-blue-200">
-              Note: This is a rough estimate based on Forbes data from 2024.
-              <Link
-                href="https://www.forbes.com/real-time-billionaires/"
-                className="hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Source: Forbes Real-Time Billionaires
-              </Link>
-            </p>
-            <div className="mt-2">
-              <Button
-                onClick={printReceipt}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded text-sm"
-              >
-                🧾 View receipt
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-800">
       <div className="container mx-auto px-4 py-8">
-        {/* Header Image */}
+        {/* Header Section */}
         <div className="text-center mb-8">
+          {/* Profile Image */}
           <div className="inline-block rounded-full overflow-hidden border-4 border-blue-500 mb-4">
             <div className="w-32 h-32 relative">
               <Image
@@ -239,11 +214,32 @@ export default function SpendElonsMoneyDeluxe() {
               />
             </div>
           </div>
+
+          {/* Title */}
           <h1 className="text-4xl md:text-6xl font-bold text-blue-800 mb-2">
             Spend Elon Musk Money
           </h1>
+
+          {/* Description */}
+          <p className="text-xl text-gray-600 mb-4">
+            As of {getCurrentDate()}, Forbes reports Elon Musk's net worth at $
+            {(initialBalance / 1e9).toFixed(1)} billion (US Dollars).
+          </p>
           <p className="text-xl text-gray-600">
-            Experience the thrill of spending Elon&apos;s massive fortune in our online simulator game. Shop for luxuries, make bold investments, and see if you can spend it all!
+            "Experience the thrill of spending Elon's massive fortune!"
+          </p>
+
+          {/* Source Link */}
+          <p className="text-sm text-gray-500 mt-2">
+            Source:{' '}
+            <Link
+              href="https://www.forbes.com/real-time-billionaires/"
+              className="text-blue-500 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Forbes Real-Time Billionaires
+            </Link>
           </p>
         </div>
 
@@ -255,112 +251,135 @@ export default function SpendElonsMoneyDeluxe() {
           </CardContent>
         </Card>
 
-        {/* Net Worth Card */}
-        <NetWorthCard balance={balance} formatMoney={formatMoney} initialBalance={initialBalance} />
-
-        {/* Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {items.map((item) => (
-            <Card key={item.id} className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="p-4">
-           <div className="h-48 mb-4 relative">
-  <Image
-    src={item.image}
-    alt={item.name}
-    layout="fill"
-    objectFit="contain"
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    quality={75}
-    loading="lazy"
-  />
-</div>
-            
-                <h3 className="text-lg font-semibold mb-2 text-center">{item.name}</h3>
-                <p className="text-2xl font-bold text-center mb-4">{formatMoney(item.price)}</p>
-                <div className="flex justify-between items-center">
-                  <Button
-                    onClick={() => sellItem(item.id, item.price)}
-                    disabled={!cart[item.id]}
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    SELL
-                  </Button>
-                  <input
-                    type="number"
-                    value={cart[item.id] || 0}
-                    readOnly
-                    className="w-16 text-center border border-gray-300 rounded"
-                  />
-                  <Button
-                    onClick={() => buyItem(item.id, item.price)}
-                    disabled={balance < item.price}
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    BUY
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          ))}
+        {/* Static NetWorthCard Below Quote */}
+        <div className="w-full mb-4">
+          <NetWorthCard
+            balance={balance}
+            initialBalance={initialBalance}
+            onViewReceipt={() => setShowReceipt(true)}
+          />
         </div>
 
-        {/* Cart */}
-        <Card className="bg-white shadow-lg mt-8">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-gray-800">Your Cart</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-left">Name</TableHead>
-                  <TableHead className="text-right">Quantity</TableHead>
-                  <TableHead className="text-right">Price</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {Object.entries(cart).map(([id, quantity]) => {
-                  const item = items.find((i) => i.id === parseInt(id));
-                  if (item && quantity > 0) {
-                    return (
-                      <TableRow key={id}>
-                        <TableCell className="text-left">{item.name}</TableCell>
-                        <TableCell className="text-right">{quantity}</TableCell>
-                        <TableCell className="text-right">{formatMoney(quantity * item.price)}</TableCell>
-                      </TableRow>
-                    );
-                  }
-                  return null;
-                })}
-              </TableBody>
-            </Table>
-          </CardContent>
-          <CardFooter className="flex flex-col sm:flex-row justify-between items-center bg-gray-100 p-4">
-            <p className="text-xl font-bold text-gray-800 mb-4 sm:mb-0">
-              Total Spent: {formatMoney(initialBalance - balance)}
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-              <Button 
-                onClick={printReceipt} 
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center"
-              >
-                <Printer className="mr-2 h-5 w-5" /> Print Receipt
-              </Button>
-              <Button
-                onClick={shareOnTwitter}
-                className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
-              >
-                Share on Twitter (X)
-              </Button>
-              <Button
-                onClick={shareOnFacebook}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-              >
-                Share on Facebook
-              </Button>
-            </div>
-          </CardFooter>
-        </Card>
+        {/* Sticky NetWorthCard During Scroll */}
+        <div
+          className={`sticky top-0 z-10 transition-all duration-300 ease-in-out ${
+            showStickyHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        >
+          <NetWorthCard
+            balance={balance}
+            initialBalance={initialBalance}
+            onViewReceipt={() => setShowReceipt(true)}
+          />
+        </div>
+
+        {/* Main Content */}
+        <div ref={contentRef}>
+          {/* Items Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {items.map((item) => (
+              <Card key={item.id} className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div className="p-4">
+                  <div className="h-48 mb-4 relative">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      layout="fill"
+                      objectFit="contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={75}
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 text-center">{item.name}</h3>
+                  <p className="text-2xl font-bold text-center mb-4">{formatMoney(item.price)}</p>
+                  <div className="flex justify-between items-center">
+                    <Button
+                      onClick={() => sellItem(item.id, item.price)}
+                      disabled={!cart[item.id]}
+                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      SELL
+                    </Button>
+                    <input
+                      type="number"
+                      value={cart[item.id] || 0}
+                      readOnly
+                      className="w-16 text-center border border-gray-300 rounded"
+                    />
+                    <Button
+                      onClick={() => buyItem(item.id, item.price)}
+                      disabled={balance < item.price}
+                      className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      BUY
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Cart */}
+          <Card className="bg-white shadow-lg mt-8">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-gray-800">Your Cart</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-left">Name</TableHead>
+                    <TableHead className="text-right">Quantity</TableHead>
+                    <TableHead className="text-right">Price</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {Object.entries(cart).map(([id, quantity]) => {
+                    const item = items.find((i) => i.id === parseInt(id));
+                    if (item && quantity > 0) {
+                      return (
+                        <TableRow key={id}>
+                          <TableCell className="text-left">{item.name}</TableCell>
+                          <TableCell className="text-right">{quantity}</TableCell>
+                          <TableCell className="text-right">{formatMoney(quantity * item.price)}</TableCell>
+                        </TableRow>
+                      );
+                    }
+                    return null;
+                  })}
+                </TableBody>
+              </Table>
+            </CardContent>
+            <CardFooter className="flex flex-col sm:flex-row justify-between items-center bg-gray-100 p-4">
+              <p className="text-xl font-bold text-gray-800 mb-4 sm:mb-0">
+                Total Spent: {formatMoney(initialBalance - balance)}
+              </p>
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                <Button
+                  onClick={printReceipt}
+                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center"
+                >
+                  <Printer className="mr-2 h-5 w-5" /> Print Receipt
+                </Button>
+                <Button
+                  onClick={shareOnTwitter}
+                  className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full"
+                >
+                  Share on Twitter (X)
+                </Button>
+                <Button
+                  onClick={shareOnFacebook}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                >
+                  Share on Facebook
+                </Button>
+              </div>
+            </CardFooter>
+          </Card>
+        </div>
+
+        {/* Receipt Modal */}
         {showReceipt && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
@@ -412,27 +431,29 @@ export default function SpendElonsMoneyDeluxe() {
             </div>
           </div>
         )}
+
+        {/* Information Section */}
         <div className="bg-blue-50 text-gray-800 min-h-screen">
           <div className="container mx-auto px-4 py-8 max-w-4xl">
             <h2 className="text-4xl font-bold mb-6 text-blue-800">
-              What is &quot;Spend Elon Musk Money&quot;?
+              What is "Spend Elon Musk Money"?
             </h2>
             <p className="text-lg mb-8 leading-relaxed">
               <Link href="https://spendelonmuskmoney.org" className="text-blue-600 hover:underline">
-                &quot;Spend Elon Musk Money&quot;
-              </Link>
-              {` is an engaging online simulator that puts you in control of
+                "Spend Elon Musk Money"
+              </Link>{' '}
+              is an engaging online simulator that puts you in control of
               Elon Musk's vast fortune. This interactive game allows you to enter a virtual
               marketplace filled with luxurious items, groundbreaking technologies, and even entire
-              companies. Your mission? Spend every last dollar of Elon Musk's wealth!`}
+              companies. Your mission? Spend every last dollar of Elon Musk's wealth!
             </p>
 
             <h3 className="text-3xl font-bold mb-4 text-blue-800">How to Play</h3>
             <ol className="list-decimal list-inside">
               <li className="mb-2">
-                <strong>Enter the Virtual Marketplace:</strong> {`As soon as you start the game, you'll
+                <strong>Enter the Virtual Marketplace:</strong> As soon as you start the game, you'll
                 find yourself in a digital shopping paradise. You have access to Elon Musk's entire
-                fortune—use it wisely (or not)!`}
+                fortune—use it wisely (or not)!
               </li>
               <li className="mb-2">
                 <strong>Browse and Shop:</strong>
@@ -449,7 +470,7 @@ export default function SpendElonsMoneyDeluxe() {
                 <strong>Make Strategic Decisions:</strong>
                 <ul className="list-disc list-inside ml-6">
                   <li>Will you invest in space exploration technology?</li>
-                  <li>{`Perhaps you'd like to buy a fleet of electric vehicles?`}</li>
+                  <li>Perhaps you'd like to buy a fleet of electric vehicles?</li>
                   <li>
                     Or maybe you prefer to indulge in more personal luxuries like private islands and
                     superyachts?
@@ -464,8 +485,8 @@ export default function SpendElonsMoneyDeluxe() {
                 </ul>
               </li>
               <li>
-                <strong>Print Your Receipt:</strong> {`Once you've exhausted the fortune (or whenever
-                you choose), hit the "Print Receipt" button to see a summary of your spending spree.`}
+                <strong>Print Your Receipt:</strong> Once you've exhausted the fortune (or whenever
+                you choose), hit the "Print Receipt" button to see a summary of your spending spree.
               </li>
             </ol>
 
@@ -492,7 +513,7 @@ export default function SpendElonsMoneyDeluxe() {
             </ul>
 
             <h3 className="text-2xl font-bold mt-8 mb-4">
-              Why Play &quot;Spend Elon Musk Money&quot;?
+              Why Play "Spend Elon Musk Money"?
             </h3>
             <ul className="list-disc list-inside">
               <li>
@@ -520,10 +541,12 @@ export default function SpendElonsMoneyDeluxe() {
             <h3 className="text-2xl font-bold mt-8 mb-4">Interesting Facts</h3>
             <ul className="list-disc list-inside">
               <li>
-                {`If you spent $1 million every day, it would take over 600 years to spend Elon Musk's
-                entire fortune.`}
+                <p>"You could buy a $500,000 house every day for over 1,200 years with Elon Musk's net worth."</p>
               </li>
-              <li>{`Elon Musk's net worth is greater than the GDP of many countries.`}</li>
+              <li>
+                <p>"If you spent $1 million every day, it would take you over 600 years to spend Elon Musk's fortune."</p>
+              </li>
+              <li>Elon Musk's net worth is greater than the GDP of many countries.</li>
               <li>
                 The items available in our game range from everyday luxuries to world-changing
                 investments, reflecting the diverse potential of immense wealth.
@@ -532,24 +555,26 @@ export default function SpendElonsMoneyDeluxe() {
 
             <h3 className="text-2xl font-bold mt-8 mb-4">Disclaimer</h3>
             <p>
-              {`This game is for entertainment and educational purposes only. The fortune and purchasing
+              This game is for entertainment and educational purposes only. The fortune and purchasing
               options are virtual and do not reflect real-world availability or exact prices. "Spend
-              Elon Musk's Money" is not affiliated with Elon Musk or any of his companies.`}
+              Elon Musk's Money" is not affiliated with Elon Musk or any of his companies.
             </p>
 
             <p className="mt-8 text-xl font-bold">
-              {`Ready to begin your spending spree? Start the game now and see how you'd spend one of
-              the world's largest fortunes!`}
+              Ready to begin your spending spree? Start the game now and see how you'd spend one of
+              the world's largest fortunes!
             </p>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="bg-gray-800 text-white py-4 mt-12">
+          <div className="container mx-auto px-4 text-center">
+            <p className="mb-2">Created by H</p>
+            <a href="/disclaimer" className="text-blue-300 hover:underline">Disclaimer</a>
+          </div>
+        </footer>
       </div>
-      <footer className="bg-gray-800 text-white py-4 mt-12">
-        <div className="container mx-auto px-4 text-center">
-          <p className="mb-2">Created by H</p>
-          <a href="/disclaimer" className="text-blue-300 hover:underline">Disclaimer</a>
-        </div>
-      </footer>
     </div>
   );
-}
+};
