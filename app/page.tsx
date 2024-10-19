@@ -18,6 +18,7 @@ import {
 import { Button } from "./components/ui/button";
 import Link from "next/link";
 import { Printer, QuoteIcon } from "lucide-react";
+import Image from 'next/image';
 
 // Define types
 type Item = {
@@ -34,56 +35,56 @@ type Cart = {
 const initialBalance = 246000000000;
 
 const items: Item[] = [
-  { id: 1, name: "Luxury Yacht", price: 300000000, image: "https://i.imgur.com/hViTi0f.jpeg" },
-  { id: 2, name: "Private Jet", price: 65000000, image: "https://i.imgur.com/6mmfl3G.png" },
-  { id: 3, name: "Mansion in Beverly Hills", price: 125000000, image: "https://i.imgur.com/T60bUj1.png" },
-  { id: 4, name: "Bugatti La Voiture Noire", price: 18700000, image: "https://i.imgur.com/iKgEzMZ.png" },
-  { id: 5, name: "Luxury Island", price: 100000000, image: "https://i.imgur.com/m55kEfe.png" },
-  { id: 6, name: "Leonardo da Vinci Painting", price: 450000000, image: "https://i.imgur.com/3vppE8x.png" },
-  { id: 7, name: "Super Bowl Ad", price: 5500000, image: "https://i.imgur.com/Qloix2Y.jpeg" },
-  { id: 8, name: "Rocket Launch", price: 62000000, image: "https://i.imgur.com/7DmCMK7.png" },
-  { id: 9, name: "NFL Team", price: 3000000000, image: "https://i.imgur.com/s1ennBw.png" },
-  { id: 10, name: "Luxury Hotel", price: 1000000000, image: "https://i.imgur.com/POGvxE5.png" },
-  { id: 11, name: "Diamond Necklace", price: 200000000, image: "https://i.imgur.com/vFF0TRA.png" },
-  { id: 12, name: "Private Concert by Top Artist", price: 5000000, image: "https://i.imgur.com/IRvmICu.png" },
-  { id: 13, name: "Luxury Submarine", price: 90000000, image: "https://i.imgur.com/F21YVNy.png" },
-  { id: 14, name: "Hollywood Movie Production", price: 200000000, image: "https://i.imgur.com/eCafVD0.png" },
-  { id: 15, name: "Formula 1 Racing Team", price: 700000000, image: "https://i.imgur.com/6ByDhjE.png" },
-  { id: 16, name: "Helicopter", price: 15000000, image: "https://i.imgur.com/bpNXyDq.png" },
-  { id: 17, name: "Luxury Watch Collection", price: 50000000, image: "https://i.imgur.com/GHGEyCo.png" },
-  { id: 18, name: "Private Safari Lodge", price: 80000000, image: "https://i.imgur.com/2pFCJNE.jpeg" },
-  { id: 19, name: "Superyacht with Helipad", price: 500000000, image: "https://i.imgur.com/AiwQsiJ.jpeg" },
-  { id: 20, name: "Private Museum", price: 750000000, image: "https://i.imgur.com/G1bnOCe.png" },
-  { id: 21, name: "Luxury Space Flight", price: 55000000, image: "https://i.imgur.com/UdUU59Z.png" },
-  { id: 22, name: "Professional Sports Team", price: 2500000000, image: "https://i.imgur.com/yA5OthA.jpeg" },
-  { id: 23, name: "Private Island Resort", price: 150000000, image: "https://i.imgur.com/RytxcSE.png" },
-  { id: 24, name: "Luxury Car Collection", price: 100000000, image: "https://i.imgur.com/u2z0iDm.png" },
-  { id: 25, name: "High-End Restaurant Chain", price: 50000000, image: "https://i.imgur.com/MSjuu36.png" },
-  { id: 26, name: "Luxury Penthouse in NYC", price: 238000000, image: "https://i.imgur.com/WZQvGE9.png" },
-  { id: 27, name: "Private Golf Course", price: 250000000, image: "https://i.imgur.com/gbWm6e9.png" },
-  { id: 28, name: "Luxury Cruise Ship", price: 1200000000, image: "https://i.imgur.com/wiLkBYS.png" },
-  { id: 29, name: "High-End Fashion Brand", price: 1000000000, image: "https://i.imgur.com/bgKAuXK.png" },
-  { id: 30, name: "Rare Wine Collection", price: 50000000, image: "https://i.imgur.com/1o2hPBy.png" },
-  { id: 31, name: "Private University", price: 5000000000, image: "https://i.imgur.com/OfjZX2c.png" },
-  { id: 32, name: "Luxury Hotel Chain", price: 3000000000, image: "https://i.imgur.com/n8Ng3jP.png" },
-  { id: 33, name: "Private Airport", price: 1000000000, image: "https://i.imgur.com/G3Aer4l.png" },
-  { id: 34, name: "Luxury Ski Resort", price: 400000000, image: "https://i.imgur.com/ggMhJu9.png" },
-  { id: 35, name: "High-End Tech Company", price: 10000000000, image: "https://i.imgur.com/hrvlaWS.png" },
-  { id: 36, name: "Luxury Train", price: 350000000, image: "https://i.imgur.com/6EDMj8U.png" },
-  { id: 37, name: "Private Library Collection", price: 100000000, image: "https://i.imgur.com/IRN83wE.png" },
-  { id: 38, name: "Luxury Spa Chain", price: 200000000, image: "https://i.imgur.com/O3tOPbt.png" },
-  { id: 39, name: "High-End Jewelry Brand", price: 1500000000, image: "https://i.imgur.com/UEasHMx.png" },
-  { id: 40, name: "Private Concert Hall", price: 500000000, image: "https://i.imgur.com/C4T1gJg.png" },
-  { id: 41, name: "Luxury Helicopter Fleet", price: 100000000, image: "https://i.imgur.com/VVVqRHE.png" },
-  { id: 42, name: "Private Art Gallery", price: 300000000, image: "https://i.imgur.com/aaDO7cb.png" },
-  { id: 43, name: "Luxury Yacht Club", price: 750000000, image: "https://i.imgur.com/kBdb5IP.png" },
-  { id: 44, name: "High-End Winery", price: 200000000, image: "https://i.imgur.com/P3wfOkO.png" },
-  { id: 45, name: "Private Beach Resort", price: 500000000, image: "https://i.imgur.com/uirYGJs.png" },
-  { id: 46, name: "Luxury Car Brand", price: 5000000000, image: "https://i.imgur.com/WP8gO4T.jpeg" },
-  { id: 47, name: "Private Observatory", price: 150000000, image: "https://i.imgur.com/AzkzaE0.png" },
-  { id: 48, name: "High-End Gaming Company", price: 2000000000, image: "https://i.imgur.com/T07Ho1e.png" },
-  { id: 49, name: "Luxury Submarine Fleet", price: 500000000, image: "https://i.imgur.com/4sMCjRX.png" },
-  { id: 50, name: "Private Space Program", price: 20000000000, image: "https://i.imgur.com/zdzgYRP.png" },
+  { id: 1, name: "Luxury Yacht", price: 300000000, image: "/luxury-yacht.webp" },
+  { id: 2, name: "Private Jet", price: 65000000, image: "/private-jet.webp" },
+  { id: 3, name: "Mansion in Beverly Hills", price: 125000000, image: "/mansion-beverly-hills.webp" },
+  { id: 4, name: "Bugatti La Voiture Noire", price: 18700000, image: "/bugatti-la-voiture-noire.webp" },
+  { id: 5, name: "Luxury Island", price: 100000000, image: "/luxury-island.webp" },
+  { id: 6, name: "Leonardo da Vinci Painting", price: 450000000, image: "/leonardo-da-vinci-painting.webp" },
+  { id: 7, name: "Super Bowl Ad", price: 5500000, image: "/super-bowl-ad.webp" },
+  { id: 8, name: "Rocket Launch", price: 62000000, image: "/rocket-launch.webp" },
+  { id: 9, name: "NFL Team", price: 3000000000, image: "/nfl-team.webp" },
+  { id: 10, name: "Luxury Hotel", price: 1000000000, image: "/luxury-hotel.webp" },
+  { id: 11, name: "Diamond Necklace", price: 200000000, image: "/diamond-necklace.webp" },
+  { id: 12, name: "Private Concert by Top Artist", price: 5000000, image: "/private-concert.webp" },
+  { id: 13, name: "Luxury Submarine", price: 90000000, image: "/luxury-submarine.webp" },
+  { id: 14, name: "Hollywood Movie Production", price: 200000000, image: "/hollywood-movie-production.webp" },
+  { id: 15, name: "Formula 1 Racing Team", price: 700000000, image: "/formula-1-racing-team.webp" },
+  { id: 16, name: "Helicopter", price: 15000000, image: "/helicopter.webp" },
+  { id: 17, name: "Luxury Watch Collection", price: 50000000, image: "/luxury-watch-collection.webp" },
+  { id: 18, name: "Private Safari Lodge", price: 80000000, image: "/private-safari-lodge.webp" },
+  { id: 19, name: "Superyacht with Helipad", price: 500000000, image: "/superyacht-with-helipad.webp" },
+  { id: 20, name: "Private Museum", price: 750000000, image: "/private-museum.webp" },
+  { id: 21, name: "Luxury Space Flight", price: 55000000, image: "/luxury-space-flight.webp" },
+  { id: 22, name: "Professional Sports Team", price: 2500000000, image: "/professional-sports-team.webp" },
+  { id: 23, name: "Private Island Resort", price: 150000000, image: "/private-island-resort.webp" },
+  { id: 24, name: "Luxury Car Collection", price: 100000000, image: "/luxury-car-collection.webp" },
+  { id: 25, name: "High-End Restaurant Chain", price: 50000000, image: "/high-end-restaurant-chain.webp" },
+  { id: 26, name: "Luxury Penthouse in NYC", price: 238000000, image: "/luxury-penthouse-nyc.webp" },
+  { id: 27, name: "Private Golf Course", price: 250000000, image: "/private-golf-course.webp" },
+  { id: 28, name: "Luxury Cruise Ship", price: 1200000000, image: "/luxury-cruise-ship.webp" },
+  { id: 29, name: "High-End Fashion Brand", price: 1000000000, image: "/high-end-fashion-brand.webp" },
+  { id: 30, name: "Rare Wine Collection", price: 50000000, image: "/rare-wine-collection.webp" },
+  { id: 31, name: "Private University", price: 5000000000, image: "/private-university.webp" },
+  { id: 32, name: "Luxury Hotel Chain", price: 3000000000, image: "/luxury-hotel-chain.webp" },
+  { id: 33, name: "Private Airport", price: 1000000000, image: "/private-airport.webp" },
+  { id: 34, name: "Luxury Ski Resort", price: 400000000, image: "/luxury-ski-resort.webp" },
+  { id: 35, name: "High-End Tech Company", price: 10000000000, image: "/high-end-tech-company.webp" },
+  { id: 36, name: "Luxury Train", price: 350000000, image: "/luxury-train.webp" },
+  { id: 37, name: "Private Library Collection", price: 100000000, image: "/private-library-collection.webp" },
+  { id: 38, name: "Luxury Spa Chain", price: 200000000, image: "/luxury-spa-chain.webp" },
+  { id: 39, name: "High-End Jewelry Brand", price: 1500000000, image: "/high-end-jewelry-brand.webp" },
+  { id: 40, name: "Private Concert Hall", price: 500000000, image: "/private-concert-hall.webp" },
+  { id: 41, name: "Luxury Helicopter Fleet", price: 100000000, image: "/luxury-helicopter-fleet.webp" },
+  { id: 42, name: "Private Art Gallery", price: 300000000, image: "/private-art-gallery.webp" },
+  { id: 43, name: "Luxury Yacht Club", price: 750000000, image: "/luxury-yacht-club.webp" },
+  { id: 44, name: "High-End Winery", price: 200000000, image: "/high-end-winery.webp" },
+  { id: 45, name: "Private Beach Resort", price: 500000000, image: "/private-beach-resort.webp" },
+  { id: 46, name: "Luxury Car Brand", price: 5000000000, image: "/luxury-car-brand.webp" },
+  { id: 47, name: "Private Observatory", price: 150000000, image: "/private-observatory.webp" },
+  { id: 48, name: "High-End Gaming Company", price: 2000000000, image: "/high-end-gaming-company.webp" },
+  { id: 49, name: "Luxury Submarine Fleet", price: 500000000, image: "/luxury-submarine-fleet.webp" },
+  { id: 50, name: "Private Space Program", price: 20000000000, image: "/private-space-program.webp" },
 ];
 
 
@@ -229,12 +230,14 @@ export default function SpendElonsMoneyDeluxe() {
         {/* Header Image */}
         <div className="text-center mb-8">
           <div className="inline-block rounded-full overflow-hidden border-4 border-blue-500 mb-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://i.imgur.com/EScIblf.jpeg"
-              alt="Elon Musk"
-              className="w-32 h-32 object-cover"
-            />
+            <div className="w-32 h-32 relative">
+              <Image
+                src="/spend-elon-musk-money.webp"
+                alt="Spend Elon Musk Money"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-blue-800 mb-2">
             Spend Elon Musk Money
