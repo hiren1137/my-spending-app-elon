@@ -263,14 +263,15 @@ export default function SpendElonsMoneyDeluxe() {
           {items.map((item) => (
             <Card key={item.id} className="bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="p-4">
-                <div className="h-48 mb-4">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+           <div className="h-48 mb-4 relative">
+  <Image
+    src={item.image}
+    alt={item.name}
+    layout="fill"
+    objectFit="contain"
+  />
+</div>
+            
                 <h3 className="text-lg font-semibold mb-2 text-center">{item.name}</h3>
                 <p className="text-2xl font-bold text-center mb-4">{formatMoney(item.price)}</p>
                 <div className="flex justify-between items-center">
