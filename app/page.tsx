@@ -541,10 +541,10 @@ export default function SpendElonsMoneyDeluxe() {
             <h3 className="text-2xl font-bold mt-8 mb-4">Interesting Facts</h3>
             <ul className="list-disc list-inside">
               <li>
-                <p>"You could buy a $500,000 house every day for over 1,200 years with Elon Musk's net worth."</p>
+                "You could buy a $500,000 house every day for over 1,200 years with Elon Musk's net worth."
               </li>
               <li>
-                <p>"If you spent $1 million every day, it would take you over 600 years to spend Elon Musk's fortune."</p>
+                "If you spent $1 million every day, it would take you over 600 years to spend Elon Musk's fortune."
               </li>
               <li>Elon Musk's net worth is greater than the GDP of many countries.</li>
               <li>
