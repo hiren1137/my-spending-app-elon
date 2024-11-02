@@ -432,140 +432,155 @@ export default function SpendElonsMoneyDeluxe() {
           </div>
         )}
 
-        {/* Information Section */}
-        <div className="bg-blue-50 text-gray-800 min-h-screen">
-          <div className="container mx-auto px-4 py-8 max-w-4xl">
-            <h2 className="text-4xl font-bold mb-6 text-blue-800">
-              What is "Spend Elon Musk Money"?
-            </h2>
-            <p className="text-lg mb-8 leading-relaxed">
-              <Link href="https://spendelonmuskmoney.org" className="text-blue-600 hover:underline">
-                "Spend Elon Musk Money"
-              </Link>{' '}
-              is an engaging online simulator that puts you in control of
-              Elon Musk's vast fortune. This interactive game allows you to enter a virtual
-              marketplace filled with luxurious items, groundbreaking technologies, and even entire
-              companies. Your mission? Spend every last dollar of Elon Musk's wealth!
-            </p>
+<div className="bg-blue-50 text-gray-800 min-h-screen" id="top">
+  <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <h1 className="text-4xl font-bold mb-6 text-blue-800">
+      Spend Elon Musk Money - The Ultimate Billionaire Fortune Simulator
+    </h1>
 
-            <h3 className="text-3xl font-bold mb-4 text-blue-800">How to Play</h3>
-            <ol className="list-decimal list-inside">
-              <li className="mb-2">
-                <strong>Enter the Virtual Marketplace:</strong> As soon as you start the game, you'll
-                find yourself in a digital shopping paradise. You have access to Elon Musk's entire
-                fortune—use it wisely (or not)!
-              </li>
-              <li className="mb-2">
-                <strong>Browse and Shop:</strong>
-                <ul className="list-disc list-inside ml-6">
-                  <li>
-                    Navigate through various categories of items, from cutting-edge tech to
-                    extravagant luxuries.
-                  </li>
-                  <li>Each item comes with a detailed description and its price tag.</li>
-                  <li>Click on items to add them to your cart or remove them.</li>
-                </ul>
-              </li>
-              <li className="mb-2">
-                <strong>Make Strategic Decisions:</strong>
-                <ul className="list-disc list-inside ml-6">
-                  <li>Will you invest in space exploration technology?</li>
-                  <li>Perhaps you'd like to buy a fleet of electric vehicles?</li>
-                  <li>
-                    Or maybe you prefer to indulge in more personal luxuries like private islands and
-                    superyachts?
-                  </li>
-                </ul>
-              </li>
-              <li className="mb-2">
-                <strong>Track Your Progress:</strong>
-                <ul className="list-disc list-inside ml-6">
-                  <li>Watch as the remaining balance updates in real-time with each purchase.</li>
-                  <li>Try to find creative ways to spend every last dollar!</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Print Your Receipt:</strong> Once you've exhausted the fortune (or whenever
-                you choose), hit the "Print Receipt" button to see a summary of your spending spree.
-              </li>
-            </ol>
+    <div className="text-lg mb-8 leading-relaxed">
+      <p className="mb-4">
+        Welcome to the ultimate spend Elon Musk money experience, the world's most popular billionaire spending simulator with over 27,000 monthly players. Ever wondered what it's like spending Elon Musk's fortune? Our interactive game puts you in control of one of the world's largest fortunes, letting you experience the thrill of spending Elon Musks money through an immersive virtual marketplace.
+      </p>
+      <p className="mb-4">
+        From investing in groundbreaking technologies to purchasing luxurious items, this Elon Musk money game offers endless possibilities. Try spending all of Elon Musk's money in various creative ways, or take on exciting challenges like spending Elon Musk money in 30 seconds!
+      </p>
+    </div>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">Key Features</h3>
-            <ul className="list-disc list-inside">
-              <li>
-                <strong>Vast Selection:</strong> Choose from over 50 unique, high-value items.
-              </li>
-              <li>
-                <strong>Real-time Updates:</strong> See the remaining balance change instantly as you
-                shop.
-              </li>
-              <li>
-                <strong>Educational Insights:</strong> Learn interesting facts about wealth, economy,
-                and the scale of billion-dollar fortunes.
-              </li>
-              <li>
-                <strong>Strategic Gameplay:</strong> Balance between different types of purchases to
-                spend the entire fortune.
-              </li>
-              <li>
-                <strong>Shareable Results:</strong> Print or share your final receipt on social media.
-              </li>
-            </ul>
+    <h2 className="text-3xl font-bold mb-4 text-blue-800">How to Play</h2>
+    <ol className="list-decimal list-inside mb-8">
+      <li className="mb-2">
+        <strong>Enter the Virtual Marketplace</strong>
+        <ul className="list-disc list-inside ml-6">
+          <li>Start with complete access to Elon Musk's fortune</li>
+          <li>Experience unlimited spending potential</li>
+          <li>Explore a wide range of investment options</li>
+        </ul>
+      </li>
+      <li className="mb-2">
+        <strong>Browse and Shop</strong>
+        <ul className="list-disc list-inside ml-6">
+          <li>Discover cutting-edge technology investments</li>
+          <li>Explore luxury items and properties</li>
+          <li>Each item features detailed descriptions and real market valuations</li>
+          <li>Try different spending strategies</li>
+        </ul>
+      </li>
+      <li className="mb-2">
+        <strong>Strategic Decision Making</strong>
+        <ul className="list-disc list-inside ml-6">
+          <li>Choose between space exploration investments</li>
+          <li>Build your electric vehicle empire</li>
+          <li>Invest in sustainable energy solutions</li>
+          <li>Purchase private islands and mega-yachts</li>
+          <li>Experience how Elon Musk spends his money</li>
+        </ul>
+      </li>
+      <li className="mb-2">
+        <strong>Real-time Progress Tracking</strong>
+        <ul className="list-disc list-inside ml-6">
+          <li>Watch your remaining balance update instantly</li>
+          <li>Track spending patterns and investments</li>
+          <li>Monitor your progress towards spending goals</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Share Your Results</strong>
+        <ul className="list-disc list-inside ml-6">
+          <li>Generate detailed spending reports</li>
+          <li>Compare your spending strategy with others</li>
+          <li>Challenge friends to spend Elon's fortune</li>
+        </ul>
+      </li>
+    </ol>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">
-              Why Play "Spend Elon Musk Money"?
-            </h3>
-            <ul className="list-disc list-inside">
-              <li>
-                <strong>Gain Perspective:</strong> Understand the scale of immense wealth in a
-                tangible, interactive way.
-              </li>
-              <li>
-                <strong>Explore Possibilities:</strong> Discover various ways extreme wealth could
-                potentially be used or invested.
-              </li>
-              <li>
-                <strong>Have Fun:</strong> Enjoy the thrill of unlimited virtual spending without
-                real-world consequences.
-              </li>
-              <li>
-                <strong>Learn:</strong> Pick up interesting facts about luxury items, tech
-                innovations, and large-scale investments.
-              </li>
-              <li>
-                <strong>Challenge Yourself:</strong> Try to spend the entire fortune as quickly or
-                creatively as possible.
-              </li>
-            </ul>
+    <h3 className="text-2xl font-bold mt-8 mb-4">Game Modes and Challenges</h3>
+    <ul className="list-disc list-inside mb-8">
+      <li className="mb-2">
+        <strong>Speed Challenge:</strong> Spend Elon Musk money in 1 minute
+      </li>
+      <li className="mb-2">
+        <strong>Strategy Mode:</strong> Make calculated investments and track returns
+      </li>
+      <li className="mb-2">
+        <strong>Unlimited Mode:</strong> Take your time spending Elon's fortune
+      </li>
+      <li className="mb-2">
+        <strong>Daily Challenge:</strong> New spending scenarios every day
+      </li>
+      <li className="mb-2">
+        <strong>Custom Scenarios:</strong> Create your own spending challenges
+      </li>
+    </ul>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">Interesting Facts</h3>
-            <ul className="list-disc list-inside">
-              <li>
-                "You could buy a $500,000 house every day for over 1,200 years with Elon Musk's net worth."
-              </li>
-              <li>
-                "If you spent $1 million every day, it would take you over 600 years to spend Elon Musk's fortune."
-              </li>
-              <li>Elon Musk's net worth is greater than the GDP of many countries.</li>
-              <li>
-                The items available in our game range from everyday luxuries to world-changing
-                investments, reflecting the diverse potential of immense wealth.
-              </li>
-            </ul>
+    <h3 className="text-2xl font-bold mt-8 mb-4">Key Features</h3>
+    <ul className="list-disc list-inside">
+      <li className="mb-2">
+        <strong>Vast Selection:</strong> Over 50 unique, high-value items and investment opportunities
+      </li>
+      <li className="mb-2">
+        <strong>Real-time Updates:</strong> See your fortune change instantly as you make purchases
+      </li>
+      <li className="mb-2">
+        <strong>Interactive Learning:</strong> Understand wealth management and investment strategies
+      </li>
+      <li className="mb-2">
+        <strong>Multiple Spending Categories:</strong> Technology, real estate, luxury items, and more
+      </li>
+      <li className="mb-2">
+        <strong>Social Features:</strong> Share your spending journey and compete with friends
+      </li>
+    </ul>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">Disclaimer</h3>
-            <p>
-              This game is for entertainment and educational purposes only. The fortune and purchasing
-              options are virtual and do not reflect real-world availability or exact prices. "Spend
-              Elon Musk's Money" is not affiliated with Elon Musk or any of his companies.
-            </p>
+    <h3 className="text-2xl font-bold mt-8 mb-4">Fascinating Fortune Facts</h3>
+    <ul className="list-disc list-inside">
+      <li className="mb-2">
+        If you started spending Elon's money at $500,000 per day, it would take over 1,200 years to spend it all
+      </li>
+      <li className="mb-2">
+        Spending $1 million every day would require more than 600 years to exhaust the fortune
+      </li>
+      <li className="mb-2">
+        This incredible wealth surpasses the GDP of many countries
+      </li>
+      <li className="mb-2">
+        Our spending simulator helps visualize the true scale of a billion-dollar fortune
+      </li>
+    </ul>
 
-            <p className="mt-8 text-xl font-bold">
-              Ready to begin your spending spree? Start the game now and see how you'd spend one of
-              the world's largest fortunes!
-            </p>
-          </div>
-        </div>
+    <h3 className="text-2xl font-bold mt-8 mb-4">Educational Benefits</h3>
+    <ul className="list-disc list-inside">
+      <li className="mb-2">
+        <strong>Financial Perspective:</strong> Understand the scale of extreme wealth
+      </li>
+      <li className="mb-2">
+        <strong>Investment Learning:</strong> Explore different investment strategies
+      </li>
+      <li className="mb-2">
+        <strong>Economic Education:</strong> Learn about market valuations and wealth management
+      </li>
+      <li className="mb-2">
+        <strong>Strategic Thinking:</strong> Develop decision-making skills
+      </li>
+    </ul>
+
+    <div className="mt-8 text-xl font-bold text-center mb-8">
+      Ready to experience what it's like to spend Elon Musk's fortune? Start now and see how you'd manage one of the world's largest fortunes!
+    </div>
+
+    <div className="bg-blue-100 p-6 rounded-lg mt-8 mb-8">
+      <h3 className="text-2xl font-bold mb-4">Did You Know?</h3>
+      <p>
+        Our Elon Musk money simulator has helped millions understand the true scale of a billion-dollar fortune. Whether you're interested in spending Elon Musk's fortune strategically or seeing how quickly you can spend it all, our simulator offers an engaging and educational experience.
+      </p>
+    </div>
+
+    <div className="mt-8 text-sm text-gray-600">
+      This game is for entertainment and educational purposes only. The fortune and purchasing options are virtual and do not reflect real-world availability or exact prices. Not affiliated with Elon Musk or his companies.
+    </div>
+  </div>
+</div>
+
 
         {/* Footer */}
         <footer className="bg-gray-800 text-white py-4 mt-12">
