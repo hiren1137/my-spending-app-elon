@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.spendelonmuskmoney.org/
+
+# Sitemaps
+Sitemap: https://www.spendelonmuskmoney.org/sitemap.xml
