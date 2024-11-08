@@ -8,6 +8,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./componen
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./components/ui/table";
 import { Button } from "./components/ui/button";
 import { Printer, QuoteIcon } from "lucide-react";
+import Head from 'next/head';
+
 
 const formatMoney = (amount: number): string => {
   return new Intl.NumberFormat('en-US', {
@@ -200,6 +202,34 @@ export default function SpendElonsMoneyDeluxe() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-800">
+          <Head>
+      {/* JSON-LD Schema for structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Spend Elon Musk Money",
+            "url": "https://spendelonmuskmoney.org",
+            "description": "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
+            "applicationCategory": "GameApplication",
+            "operatingSystem": "any",
+            "image": "/spend-elon-musk-money.webp",
+            "author": {
+              "@type": "Organization",
+              "name": "H"
+            },
+            "offers": {
+              "@type": "Offer",
+              "category": "free",
+              "price": 0,
+              "priceCurrency": "USD"
+            }
+          }),
+        }}
+      />
+    </Head>
       <div className="container mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="text-center mb-8">
