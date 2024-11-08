@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
+import SchemaOrg from "./components/SchemaOrg";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,11 +16,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Spend Elon Musk Money",
+  title: "Spend Elon Musk Money - Interactive Fortune Simulator",
   description: "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
   metadataBase: new URL('https://spendelonmuskmoney.org'),
+  keywords: "spend elon musk money, how to spend elon musk money, elon musk money game, elon musk spending simulator",
   openGraph: {
-    title: "Spend Elon Musk Money",
+    title: "Spend Elon Musk Money - Interactive Fortune Simulator",
     description: "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
     url: 'https://spendelonmuskmoney.org',
     siteName: 'Spend Elon Musk Money',
@@ -34,6 +36,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    }
   },
   icons: {
     icon: [
@@ -51,6 +57,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <SchemaOrg />
+        
         {/* Google AdSense */}
         <Script
           async
