@@ -435,9 +435,9 @@ export default function SpendElonsMoneyDeluxe() {
 
 <div className="bg-blue-50 text-gray-800 min-h-screen" id="top">
   <div className="container mx-auto px-4 py-8 max-w-4xl">
-    <h1 className="text-4xl font-bold mb-6 text-blue-800">
+    <h2 className="text-4xl font-bold mb-6 text-blue-800">
       Spend Elon Musk Money - The Ultimate Billionaire Fortune Simulator
-    </h1>
+    </h2>
 
     <div className="text-lg mb-8 leading-relaxed">
       <p className="mb-4">
