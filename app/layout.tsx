@@ -1,67 +1,57 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import Script from "next/script";
-import SchemaOrg from "./components/SchemaOrg";
+import { Metadata } from 'next'
+import localFont from "next/font/local"
+import "./globals.css"
+import Script from "next/script"
+import SchemaOrg from "./components/SchemaOrg"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
-});
+})
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
-});
+})
 
 export const metadata: Metadata = {
-  title: "Spend Elon Musk Money - Interactive Fortune Simulator",
-  description: "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
-  metadataBase: new URL('https://spendelonmuskmoney.org'),
-  keywords: "spend elon musk money, how to spend elon musk money, elon musk money game, elon musk spending simulator",
+  metadataBase: new URL('https://www.spendelonmuskmoney.org'),
+  title: {
+    template: '%s - Spend Elon Musk Money',
+    default: 'Spend Elon Musk Money - Interactive Fortune Simulator'
+  },
+  description: 'Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.',
+  alternates: {
+    canonical: 'https://www.spendelonmuskmoney.org'
+  },
   openGraph: {
-    title: "Spend Elon Musk Money - Interactive Fortune Simulator",
-    description: "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
-    url: 'https://spendelonmuskmoney.org',
+    title: 'Spend Elon Musk Money - Interactive Fortune Simulator',
+    description: 'Experience the thrill of spending billions through our interactive wealth simulator!',
+    url: 'https://www.spendelonmuskmoney.org',
     siteName: 'Spend Elon Musk Money',
-    locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/spend-elon-musk-money.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Spend Elon Musk Money Simulator',
-      },
-    ],
+    locale: 'en_US'
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Spend Elon Musk Money - Interactive Fortune Simulator",
-    description: "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
-    images: ['/spend-elon-musk-money.webp'],
+    title: 'Spend Elon Musk Money',
+    description: 'Interactive billionaire fortune simulator',
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
   },
-  icons: {
-    icon: [
-      { url: '/favicon.png', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' },
-    ],
-  },
-};
+  verification: {
+    google: 'G-7RNBNKHZ0C'
+  }
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -91,11 +81,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
-  );
+  )
 }
