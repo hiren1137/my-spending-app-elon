@@ -187,17 +187,17 @@ export default function SpendElonsMoneyDeluxe() {
     const spentAmount = initialBalance - balance;
     const tweetText = `I just spent ${formatMoney(spentAmount)} of Elon Musk's money! Can you spend it all? #SpendElonMuskMoney`;
     const url = 'https://spendelonmuskmoney.org/';
-    const imageUrl = 'https://i.imgur.com/EScIblf.jpeg';
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(url)}&card_image=${encodeURIComponent(imageUrl)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank');
   };
-
+  
   const shareOnFacebook = () => {
     const spentAmount = initialBalance - balance;
     const url = 'https://spendelonmuskmoney.org/';
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`I just spent ${formatMoney(spentAmount)} of Elon Musk's money! Can you spend it all?`)}`;
     window.open(facebookUrl, '_blank');
   };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-800">

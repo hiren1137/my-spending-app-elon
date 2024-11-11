@@ -27,11 +27,20 @@ export const metadata: Metadata = {
     siteName: 'Spend Elon Musk Money',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/spend-elon-musk-money.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Spend Elon Musk Money Simulator',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Spend Elon Musk Money",
+    title: "Spend Elon Musk Money - Interactive Fortune Simulator",
     description: "Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.",
+    images: ['/spend-elon-musk-money.webp'],
   },
   robots: {
     index: true,
@@ -39,7 +48,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-    }
+    },
   },
   icons: {
     icon: [
