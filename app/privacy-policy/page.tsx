@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-blue-50 text-gray-800 py-12">
-      <div className="container mx-auto px-4 max-w-2xl">
+    <div className="min-h-screen bg-blue-50 text-gray-800 py-12" style={{ WebkitTextSizeAdjust: 'none' }}>
+      <div className="container mx-auto px-4 max-w-2xl select-none">
         <h1 className="text-4xl font-bold mb-8 text-blue-800">Privacy Policy</h1>
         <div className="bg-white shadow-md rounded-lg p-6">
           <section className="mb-8">
@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="list-disc pl-6 mb-4">
               <li>Google AdSense</li>
-              <li>Ezoic Ads Network</li>
+              <li>Exoix Ads Network</li>
               <li>Other third-party ad networks</li>
             </ul>
             <p className="mb-4">
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold mb-4">Children&apos;s Privacy</h2>
             <p className="mb-4">
               Our service is not directed to anyone under the age of 13. We do not knowingly collect personal
               information from children under 13. If we discover that a child under 13 has provided us with
@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-semibold mb-4">Changes to This Policy</h2>
             <p className="mb-4">
               We may update our Privacy Policy from time to time. We will notify you of any changes by posting
-              the new Privacy Policy on this page and updating the "last updated" date.
+              the new Privacy Policy on this page and updating the &quot;last updated&quot; date.
             </p>
           </section>
 
@@ -94,7 +94,7 @@ export default function PrivacyPolicyPage() {
                 className="text-blue-600 hover:underline"
                 rel="noopener noreferrer"
               >
-                techjits.com(at)gmail.com
+                techjits.com@gmail.com
               </a>
             </p>
           </section>
