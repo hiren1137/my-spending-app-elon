@@ -4,7 +4,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Head from 'next/head'; 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./components/ui/table";
 import { Button } from "./components/ui/button";
@@ -201,12 +200,6 @@ export default function SpendElonsMoneyDeluxe() {
   
 
   return (
-    <>
-    <Head>
-      <title>Spend Elon Musk Money - Interactive Fortune Simulator</title>
-      <meta name="description" content="Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments." />
-      <link rel="canonical" href="https://www.spendelonmuskmoney.org/" />
-    </Head>
   
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-800">
       <div className="container mx-auto px-4 py-8">
@@ -602,6 +595,5 @@ export default function SpendElonsMoneyDeluxe() {
         </footer>
       </div>
     </div>
-    </>
   );
 };
