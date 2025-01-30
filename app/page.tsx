@@ -584,17 +584,19 @@ export default function SpendElonsMoneyDeluxe() {
 </div>
 
 
-        {/* Footer */}
-        <footer className="bg-gray-800 text-white py-4 mt-12">
+       {/* Footer */}
+<footer className="bg-gray-800 text-white py-4 mt-12">
   <div className="container mx-auto px-4 text-center">
     <p className="mb-2">Created by H</p>
     <a href="/disclaimer" className="text-blue-300 hover:underline mr-2" target="_blank" rel="noopener noreferrer">Disclaimer</a>
     <span className="text-gray-500">|</span>
     <a href="https://www.spendbillgatesmoney.xyz/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">Spend Bill Gates Money</a>
     <span className="text-gray-500">|</span>
-    <a href="https://www.houseofcalculators.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">House of Calculators</a>
+    <a href="https://www.houseofcalculators.com/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">House of Calculators</a>
+    <span className="text-gray-500">|</span>
+    <a href="https://perfectcirclegame.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">Perfect Circle Game</a>
   </div>
-        </footer>
+</footer>
       </div>
     </div>
   );
