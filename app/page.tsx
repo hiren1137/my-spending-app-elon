@@ -37,7 +37,7 @@ type Cart = {
   [key: number]: number;
 };
 
-const initialBalance = 441000000000;
+const initialBalance = 356000000000;
 
 const items: Item[] = [
   { id: 1, name: "Luxury Yacht", price: 300000000, image: "/luxury-yacht.webp" },
