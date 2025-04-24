@@ -18,16 +18,13 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.spendelonmuskmoney.org'),
-  title: {
-    template: '%s - Spend Elon Musk Money',
-    default: 'Spend Elon Musk Money - Interactive Fortune Simulator'
-  },
+  title: 'Spend Elon Musk Money',
   description: 'Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.',
   alternates: {
     canonical: 'https://www.spendelonmuskmoney.org'
   },
   openGraph: {
-    title: 'Spend Elon Musk Money - Interactive Fortune Simulator',
+    title: 'Spend Elon Musk Money',
     description: 'Experience the thrill of spending billions through our interactive wealth simulator!',
     url: 'https://www.spendelonmuskmoney.org',
     siteName: 'Spend Elon Musk Money',
