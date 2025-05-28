@@ -54,6 +54,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <SchemaOrg />
+        <link rel="icon" href="/favicon.png" type="image/png" />
         
         {/* Google AdSense */}
         <Script
