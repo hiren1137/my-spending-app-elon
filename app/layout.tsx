@@ -77,6 +77,12 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-7RNBNKHZ0C');
           `}
+                  {/* TinyAdz Script */}
+        <Script
+          src="https://app.tinyadz.com/scripts/ads.js"
+          strategy="afterInteractive"
+          data-site-id="683d75c18ca6a0fd088a7a63"
+        />
         </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
