@@ -18,7 +18,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.spendelonmuskmoney.org'),
-  title: 'Play Spend Elon Musk Money',
+  title: 'Spend Elon Musk Money',
   description: 'Spend Elon Musk money in our interactive simulator! Experience the thrill of allocating billions on luxury items and investments.',
   alternates: {
     canonical: 'https://www.spendelonmuskmoney.org'
