@@ -78,7 +78,7 @@ export default function RootLayout({
         <Script
           async
           src="https://cdn.apitiny.net/scripts/v2.0/main.js"
-          data-site-id="690ee8519b495f5baedde8eb"
+          data-site-id="682ad77470d410ec42d2fb0e"
           data-test-mode="false"
           strategy="afterInteractive"
         />
