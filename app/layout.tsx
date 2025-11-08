@@ -64,6 +64,15 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
+        {/* API Tiny Ads */}
+        <Script
+          async
+          src="https://cdn.apitiny.net/scripts/v2.0/main.js"
+          data-site-id="690ee8519b495f5baedde8eb"
+          data-test-mode="false"
+          strategy="afterInteractive"
+        />
+
         {/* Google Analytics */}
         <Script
           async
