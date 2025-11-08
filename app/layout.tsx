@@ -55,14 +55,6 @@ export default function RootLayout({
       <head>
         <SchemaOrg />
         <link rel="icon" href="/favicon.png" type="image/png" />
-        
-        {/* Google AdSense */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3157767614642943"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
 
         {/* Google Analytics */}
         <Script
