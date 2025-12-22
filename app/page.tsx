@@ -93,7 +93,7 @@ const items: Item[] = [
 ];
 
 
-const quotes: string[] =  [
+const quotes: string[] = [
   "With Elon Musk's net worth, you could spend $10,000 every day for over 62,000 years!",
   "If you spent $1 million every day, it would take you over 600 years to spend Elon Musk's fortune.",
   "Elon Musk's net worth is equivalent to the GDP of New Zealand.",
@@ -126,7 +126,7 @@ const NetWorthCard: React.FC<NetWorthCardProps> = ({ balance, initialBalance, on
           <div className="mt-2 text-sm bg-white bg-opacity-20 p-2 rounded-md">
             <span className="mr-2">📝</span>
             <p>You&apos;ve spent: {((initialBalance - balance) / initialBalance * 100).toFixed(4)}% of total</p>
-            <button 
+            <button
               onClick={onViewReceipt}
               className="ml-2 bg-white text-blue-500 px-2 py-1 rounded-full hover:bg-blue-100 focus:outline-none transition duration-300"
             >
@@ -190,17 +190,17 @@ export default function SpendElonsMoneyDeluxe() {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank');
   };
-  
+
   const shareOnFacebook = () => {
     const spentAmount = initialBalance - balance;
     const url = 'https://spendelonmuskmoney.org/';
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(`I just spent ${formatMoney(spentAmount)} of Elon Musk's money! Can you spend it all?`)}`;
     window.open(facebookUrl, '_blank');
   };
-  
+
 
   return (
-  
+
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 text-gray-800">
       <div className="container mx-auto px-4 py-8">
         {/* Header Section */}
@@ -264,9 +264,8 @@ export default function SpendElonsMoneyDeluxe() {
 
         {/* Sticky NetWorthCard During Scroll */}
         <div
-          className={`sticky top-0 z-10 transition-all duration-300 ease-in-out ${
-            showStickyHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
+          className={`sticky top-0 z-10 transition-all duration-300 ease-in-out ${showStickyHeader ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
         >
           <NetWorthCard
             balance={balance}
@@ -434,169 +433,171 @@ export default function SpendElonsMoneyDeluxe() {
           </div>
         )}
 
-<div className="bg-blue-50 text-gray-800 min-h-screen" id="top">
-  <div className="container mx-auto px-4 py-8 max-w-4xl">
-    <h2 className="text-4xl font-bold mb-6 text-blue-800">
-      Spend Elon Musk Money - The Ultimate Billionaire Fortune Simulator
-    </h2>
+        <div className="bg-blue-50 text-gray-800 min-h-screen" id="top">
+          <div className="container mx-auto px-4 py-8 max-w-4xl">
+            <h2 className="text-4xl font-bold mb-6 text-blue-800">
+              Spend Elon Musk Money - The Ultimate Billionaire Fortune Simulator
+            </h2>
 
-    <div className="text-lg mb-8 leading-relaxed">
-      <p className="mb-4">
-        Welcome to the ultimate spend Elon Musk money experience, the world's most popular billionaire spending simulator with over 27,000 monthly players. Ever wondered what it's like spending Elon Musk's fortune? Our interactive game puts you in control of one of the world's largest fortunes, letting you experience the thrill of spending Elon Musks money through an immersive virtual marketplace.
-      </p>
-      <p className="mb-4">
-        From investing in groundbreaking technologies to purchasing luxurious items, this Elon Musk money game offers endless possibilities. Try spending all of Elon Musk's money in various creative ways, or take on exciting challenges like spending Elon Musk money in 30 seconds!
-      </p>
-    </div>
+            <div className="text-lg mb-8 leading-relaxed">
+              <p className="mb-4">
+                Welcome to the ultimate spend Elon Musk money experience, the world's most popular billionaire spending simulator with over 27,000 monthly players. Ever wondered what it's like spending Elon Musk's fortune? Our interactive game puts you in control of one of the world's largest fortunes, letting you experience the thrill of spending Elon Musks money through an immersive virtual marketplace.
+              </p>
+              <p className="mb-4">
+                From investing in groundbreaking technologies to purchasing luxurious items, this Elon Musk money game offers endless possibilities. Try spending all of Elon Musk's money in various creative ways, or take on exciting challenges like spending Elon Musk money in 30 seconds!
+              </p>
+            </div>
 
-    <h2 className="text-3xl font-bold mb-4 text-blue-800">How to Play</h2>
-    <ol className="list-decimal list-inside mb-8">
-      <li className="mb-2">
-        <strong>Enter the Virtual Marketplace</strong>
-        <ul className="list-disc list-inside ml-6">
-          <li>Start with complete access to Elon Musk's fortune</li>
-          <li>Experience unlimited spending potential</li>
-          <li>Explore a wide range of investment options</li>
-        </ul>
-      </li>
-      <li className="mb-2">
-        <strong>Browse and Shop</strong>
-        <ul className="list-disc list-inside ml-6">
-          <li>Discover cutting-edge technology investments</li>
-          <li>Explore luxury items and properties</li>
-          <li>Each item features detailed descriptions and real market valuations</li>
-          <li>Try different spending strategies</li>
-        </ul>
-      </li>
-      <li className="mb-2">
-        <strong>Strategic Decision Making</strong>
-        <ul className="list-disc list-inside ml-6">
-          <li>Choose between space exploration investments</li>
-          <li>Build your electric vehicle empire</li>
-          <li>Invest in sustainable energy solutions</li>
-          <li>Purchase private islands and mega-yachts</li>
-          <li>Experience how Elon Musk spends his money</li>
-        </ul>
-      </li>
-      <li className="mb-2">
-        <strong>Real-time Progress Tracking</strong>
-        <ul className="list-disc list-inside ml-6">
-          <li>Watch your remaining balance update instantly</li>
-          <li>Track spending patterns and investments</li>
-          <li>Monitor your progress towards spending goals</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Share Your Results</strong>
-        <ul className="list-disc list-inside ml-6">
-          <li>Generate detailed spending reports</li>
-          <li>Compare your spending strategy with others</li>
-          <li>Challenge friends to spend Elon's fortune</li>
-        </ul>
-      </li>
-    </ol>
+            <h2 className="text-3xl font-bold mb-4 text-blue-800">How to Play</h2>
+            <ol className="list-decimal list-inside mb-8">
+              <li className="mb-2">
+                <strong>Enter the Virtual Marketplace</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>Start with complete access to Elon Musk's fortune</li>
+                  <li>Experience unlimited spending potential</li>
+                  <li>Explore a wide range of investment options</li>
+                </ul>
+              </li>
+              <li className="mb-2">
+                <strong>Browse and Shop</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>Discover cutting-edge technology investments</li>
+                  <li>Explore luxury items and properties</li>
+                  <li>Each item features detailed descriptions and real market valuations</li>
+                  <li>Try different spending strategies</li>
+                </ul>
+              </li>
+              <li className="mb-2">
+                <strong>Strategic Decision Making</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>Choose between space exploration investments</li>
+                  <li>Build your electric vehicle empire</li>
+                  <li>Invest in sustainable energy solutions</li>
+                  <li>Purchase private islands and mega-yachts</li>
+                  <li>Experience how Elon Musk spends his money</li>
+                </ul>
+              </li>
+              <li className="mb-2">
+                <strong>Real-time Progress Tracking</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>Watch your remaining balance update instantly</li>
+                  <li>Track spending patterns and investments</li>
+                  <li>Monitor your progress towards spending goals</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Share Your Results</strong>
+                <ul className="list-disc list-inside ml-6">
+                  <li>Generate detailed spending reports</li>
+                  <li>Compare your spending strategy with others</li>
+                  <li>Challenge friends to spend Elon's fortune</li>
+                </ul>
+              </li>
+            </ol>
 
-    <h3 className="text-2xl font-bold mt-8 mb-4">Game Modes and Challenges</h3>
-    <ul className="list-disc list-inside mb-8">
-      <li className="mb-2">
-        <strong>Speed Challenge:</strong> Spend Elon Musk money in 1 minute
-      </li>
-      <li className="mb-2">
-        <strong>Strategy Mode:</strong> Make calculated investments and track returns
-      </li>
-      <li className="mb-2">
-        <strong>Unlimited Mode:</strong> Take your time spending Elon's fortune
-      </li>
-      <li className="mb-2">
-        <strong>Daily Challenge:</strong> New spending scenarios every day
-      </li>
-      <li className="mb-2">
-        <strong>Custom Scenarios:</strong> Create your own spending challenges
-      </li>
-    </ul>
+            <h3 className="text-2xl font-bold mt-8 mb-4">Game Modes and Challenges</h3>
+            <ul className="list-disc list-inside mb-8">
+              <li className="mb-2">
+                <strong>Speed Challenge:</strong> Spend Elon Musk money in 1 minute
+              </li>
+              <li className="mb-2">
+                <strong>Strategy Mode:</strong> Make calculated investments and track returns
+              </li>
+              <li className="mb-2">
+                <strong>Unlimited Mode:</strong> Take your time spending Elon's fortune
+              </li>
+              <li className="mb-2">
+                <strong>Daily Challenge:</strong> New spending scenarios every day
+              </li>
+              <li className="mb-2">
+                <strong>Custom Scenarios:</strong> Create your own spending challenges
+              </li>
+            </ul>
 
-    <h3 className="text-2xl font-bold mt-8 mb-4">Key Features</h3>
-    <ul className="list-disc list-inside">
-      <li className="mb-2">
-        <strong>Vast Selection:</strong> Over 50 unique, high-value items and investment opportunities
-      </li>
-      <li className="mb-2">
-        <strong>Real-time Updates:</strong> See your fortune change instantly as you make purchases
-      </li>
-      <li className="mb-2">
-        <strong>Interactive Learning:</strong> Understand wealth management and investment strategies
-      </li>
-      <li className="mb-2">
-        <strong>Multiple Spending Categories:</strong> Technology, real estate, luxury items, and more
-      </li>
-      <li className="mb-2">
-        <strong>Social Features:</strong> Share your spending journey and compete with friends
-      </li>
-    </ul>
+            <h3 className="text-2xl font-bold mt-8 mb-4">Key Features</h3>
+            <ul className="list-disc list-inside">
+              <li className="mb-2">
+                <strong>Vast Selection:</strong> Over 50 unique, high-value items and investment opportunities
+              </li>
+              <li className="mb-2">
+                <strong>Real-time Updates:</strong> See your fortune change instantly as you make purchases
+              </li>
+              <li className="mb-2">
+                <strong>Interactive Learning:</strong> Understand wealth management and investment strategies
+              </li>
+              <li className="mb-2">
+                <strong>Multiple Spending Categories:</strong> Technology, real estate, luxury items, and more
+              </li>
+              <li className="mb-2">
+                <strong>Social Features:</strong> Share your spending journey and compete with friends
+              </li>
+            </ul>
 
-    <h3 className="text-2xl font-bold mt-8 mb-4">Fascinating Fortune Facts</h3>
-    <ul className="list-disc list-inside">
-      <li className="mb-2">
-        If you started spending Elon's money at $500,000 per day, it would take over 1,200 years to spend it all
-      </li>
-      <li className="mb-2">
-        Spending $1 million every day would require more than 600 years to exhaust the fortune
-      </li>
-      <li className="mb-2">
-        This incredible wealth surpasses the GDP of many countries
-      </li>
-      <li className="mb-2">
-        Our spending simulator helps visualize the true scale of a billion-dollar fortune
-      </li>
-    </ul>
+            <h3 className="text-2xl font-bold mt-8 mb-4">Fascinating Fortune Facts</h3>
+            <ul className="list-disc list-inside">
+              <li className="mb-2">
+                If you started spending Elon's money at $500,000 per day, it would take over 1,200 years to spend it all
+              </li>
+              <li className="mb-2">
+                Spending $1 million every day would require more than 600 years to exhaust the fortune
+              </li>
+              <li className="mb-2">
+                This incredible wealth surpasses the GDP of many countries
+              </li>
+              <li className="mb-2">
+                Our spending simulator helps visualize the true scale of a billion-dollar fortune
+              </li>
+            </ul>
 
-    <h3 className="text-2xl font-bold mt-8 mb-4">Educational Benefits</h3>
-    <ul className="list-disc list-inside">
-      <li className="mb-2">
-        <strong>Financial Perspective:</strong> Understand the scale of extreme wealth
-      </li>
-      <li className="mb-2">
-        <strong>Investment Learning:</strong> Explore different investment strategies
-      </li>
-      <li className="mb-2">
-        <strong>Economic Education:</strong> Learn about market valuations and wealth management
-      </li>
-      <li className="mb-2">
-        <strong>Strategic Thinking:</strong> Develop decision-making skills
-      </li>
-    </ul>
+            <h3 className="text-2xl font-bold mt-8 mb-4">Educational Benefits</h3>
+            <ul className="list-disc list-inside">
+              <li className="mb-2">
+                <strong>Financial Perspective:</strong> Understand the scale of extreme wealth
+              </li>
+              <li className="mb-2">
+                <strong>Investment Learning:</strong> Explore different investment strategies
+              </li>
+              <li className="mb-2">
+                <strong>Economic Education:</strong> Learn about market valuations and wealth management
+              </li>
+              <li className="mb-2">
+                <strong>Strategic Thinking:</strong> Develop decision-making skills
+              </li>
+            </ul>
 
-    <div className="mt-8 text-xl font-bold text-center mb-8">
-      Ready to experience what it's like to spend Elon Musk's fortune? Start now and see how you'd manage one of the world's largest fortunes!
-    </div>
+            <div className="mt-8 text-xl font-bold text-center mb-8">
+              Ready to experience what it's like to spend Elon Musk's fortune? Start now and see how you'd manage one of the world's largest fortunes!
+            </div>
 
-    <div className="bg-blue-100 p-6 rounded-lg mt-8 mb-8">
-      <h3 className="text-2xl font-bold mb-4">Did You Know?</h3>
-      <p>
-        Our Elon Musk money simulator has helped millions understand the true scale of a billion-dollar fortune. Whether you're interested in spending Elon Musk's fortune strategically or seeing how quickly you can spend it all, our simulator offers an engaging and educational experience.
-      </p>
-    </div>
+            <div className="bg-blue-100 p-6 rounded-lg mt-8 mb-8">
+              <h3 className="text-2xl font-bold mb-4">Did You Know?</h3>
+              <p>
+                Our Elon Musk money simulator has helped millions understand the true scale of a billion-dollar fortune. Whether you're interested in spending Elon Musk's fortune strategically or seeing how quickly you can spend it all, our simulator offers an engaging and educational experience.
+              </p>
+            </div>
 
-    <div className="mt-8 text-sm text-gray-600">
-      This game is for entertainment and educational purposes only. The fortune and purchasing options are virtual and do not reflect real-world availability or exact prices. Not affiliated with Elon Musk or his companies.
-    </div>
-  </div>
-</div>
+            <div className="mt-8 text-sm text-gray-600">
+              This game is for entertainment and educational purposes only. The fortune and purchasing options are virtual and do not reflect real-world availability or exact prices. Not affiliated with Elon Musk or his companies.
+            </div>
+          </div>
+        </div>
 
 
-       {/* Footer */}
-<footer className="bg-gray-800 text-white py-4 mt-12">
-  <div className="container mx-auto px-4 text-center">
-    <p className="mb-2">Created by H</p>
-    <a href="/disclaimer" className="text-blue-300 hover:underline mr-2" target="_blank" rel="noopener noreferrer">Disclaimer</a>
-    <span className="text-gray-500">|</span>
-    <a href="https://www.spendbillgatesmoney.xyz/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">Spend Bill Gates Money</a>
-    <span className="text-gray-500">|</span>
-    <a href="https://www.houseofcalculators.com/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">House of Calculators</a>
-    <span className="text-gray-500">|</span>
-    <a href="https://perfectcirclegame.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">Perfect Circle Game</a>
-  </div>
-</footer>
+        {/* Footer */}
+        <footer className="bg-gray-800 text-white py-4 mt-12">
+          <div className="container mx-auto px-4 text-center">
+            <p className="mb-2">Created by H</p>
+            <a href="/disclaimer" className="text-blue-300 hover:underline mr-2" target="_blank" rel="noopener noreferrer">Disclaimer</a>
+            <span className="text-gray-500">|</span>
+            <a href="https://www.spendbillgatesmoney.xyz/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">Spend Bill Gates Money</a>
+            <span className="text-gray-500">|</span>
+            <a href="https://www.houseofcalculators.com/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">House of Calculators</a>
+            <span className="text-gray-500">|</span>
+            <a href="https://perfectcirclegame.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">Perfect Circle Game</a>
+            <span className="text-gray-500">|</span>
+            <a href="https://medicalmalpracticelawyernearme.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">Medical Malpractice Lawyers Near Me</a>
+          </div>
+        </footer>
       </div>
     </div>
   );
