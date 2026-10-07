@@ -616,13 +616,9 @@ export default function SpendElonGame({
             <p className="mb-2">Created by H</p>
             <a href="/disclaimer" className="text-blue-300 hover:underline mr-2" target="_blank" rel="noopener noreferrer">Disclaimer</a>
             <span className="text-gray-500">|</span>
-            <a href="https://www.spendbillgatesmoney.xyz/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">Spend Bill Gates Money</a>
+            <a href="https://perfectcirclegame.com/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">Perfect Circle Game</a>
             <span className="text-gray-500">|</span>
-            <a href="https://www.houseofcalculators.com/" className="text-blue-300 hover:underline mx-2" target="_blank" rel="noopener noreferrer">House of Calculators</a>
-            <span className="text-gray-500">|</span>
-            <a href="https://perfectcirclegame.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">Perfect Circle Game</a>
-            <span className="text-gray-500">|</span>
-            <a href="https://medicalmalpracticelawyernearme.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">Medical Malpractice Lawyers Near Me</a>
+            <a href="https://launchstall.com/" className="text-blue-300 hover:underline ml-2" target="_blank" rel="noopener noreferrer">LaunchStall</a>
           </div>
         </footer>
       </div>
